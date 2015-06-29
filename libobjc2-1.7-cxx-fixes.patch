@@ -1,0 +1,31 @@
+--- libobjc2-1.7/CMakeLists.txt.0000~	2013-06-27 13:30:41.000000000 +0200
++++ libobjc2-1.7/CMakeLists.txt	2015-06-27 16:08:55.097688604 +0200
+@@ -187,6 +187,11 @@ if (ENABLE_OBJCXX)
+ 	if (NOT CXX_RUNTIME)
+ 		find_library(CXX_RUNTIME NAMES libsupc++.so)
+ 	endif (NOT CXX_RUNTIME)
++	# If it doesn't, then look for LLVM libc++abi.so instead (either works,
++	# they're ABI compatible).
++	if (NOT CXX_RUNTIME)
++		find_library(CXX_RUNTIME NAMES libc++abi.so)
++	endif (NOT CXX_RUNTIME)
+ 
+ 	# If we have a C++ ABI library, then we can produce a single libobjc that
+ 	# works for Objective-C and Objective-C++.  If not, then we need to provide
+@@ -206,7 +211,7 @@ if (ENABLE_OBJCXX)
+ 				LINKER_LANGUAGE C
+ 				SOVERSION ${libobjc_VERSION}
+ 				)
+-			target_link_libraries(objcxx ${CXX_RUNTIME})
++			target_link_libraries(objcxx ${CXX_RUNTIME} objc)
+ 			set(CXX_RUNTIME "")
+ 			list(APPEND INSTALL_TARGETS objcxx)
+ 		else ()
+@@ -222,6 +227,7 @@ if (ENABLE_OBJCXX)
+ 			LINKER_LANGUAGE C
+ 			SOVERSION ${libobjc_VERSION}
+ 			)
++		target_link_libraries(objcxx objc)
+ 		set(CXX_RUNTIME "")
+ 		list(APPEND INSTALL_TARGETS objcxx)
+ 	endif ()

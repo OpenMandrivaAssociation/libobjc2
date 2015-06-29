@@ -1,0 +1,10 @@
+--- libobjc2-1.7/opts/CMakeLists.txt.omv~	2015-06-27 16:11:49.871206412 +0200
++++ libobjc2-1.7/opts/CMakeLists.txt	2015-06-27 16:13:38.396907255 +0200
+@@ -1,6 +1,7 @@
+ cmake_minimum_required(VERSION 2.8)
+ 
+ find_package(LLVM)
++set(CMAKE_MODULE_PATH "/usr/share/llvm/cmake")
+ include(AddLLVM)
+ 
+ add_definitions(${LLVM_DEFINITIONS})
