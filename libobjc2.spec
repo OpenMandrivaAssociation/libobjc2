@@ -17,6 +17,8 @@ License: GPL
 Group: System/Libraries
 BuildRequires: cmake
 BuildRequires: ninja
+BuildRequires: llvm-devel
+BuildRequires: llvm-polly
 
 %description
 Objective-C 2.0 runtime for use with clang
