@@ -15,6 +15,8 @@ Summary: Objective-C 2.0 runtime for use with clang
 URL: http://download.gna.org/gnustep/
 License: GPL
 Group: System/Libraries
+BuildRequires: cmake
+BuildRequires: ninja
 
 %description
 Objective-C 2.0 runtime for use with clang
