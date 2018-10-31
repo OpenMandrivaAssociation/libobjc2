@@ -7,7 +7,7 @@
 
 Name: libobjc2
 Version: 1.7
-Release: 2
+Release: 3
 Source0: http://download.gna.org/gnustep/%{name}-%{version}.txz
 Patch0: libobjc2-1.7-cxx-fixes.patch
 Patch1: libobjc2-fix-llvm-detection.patch
