@@ -38,7 +38,7 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %cmake -DLLVM_OPTS:BOOL=ON \
 	-G Ninja
