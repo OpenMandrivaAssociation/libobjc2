@@ -6,6 +6,9 @@
 %define devname %mklibname objc -d
 
 Name: libobjc2
+# Outnumber gcc's libobjc (which has gcc's version number,
+# but not the feature set of libobjc2)
+Epoch: 1
 Version: 2.1
 Release: 1
 Source0: https://github.com/gnustep/libobjc2/archive/refs/tags/v%{version}.tar.gz
