@@ -1,0 +1,11 @@
+diff -up libobjc2-2.1/Test/CMakeLists.txt.omv~ libobjc2-2.1/Test/CMakeLists.txt
+--- libobjc2-2.1/Test/CMakeLists.txt.omv~	2021-04-12 18:27:21.940954003 +0200
++++ libobjc2-2.1/Test/CMakeLists.txt	2021-04-12 18:27:27.224248551 +0200
+@@ -35,7 +35,6 @@ set(TESTS
+ 	PropertyIntrospectionTest.m
+ 	PropertyIntrospectionTest2_arc.m
+ 	ProtocolCreation.m
+-	ResurrectInDealloc_arc.m
+ 	RuntimeTest.m
+ 	SuperMethodMissing.m
+ 	WeakBlock_arc.m
