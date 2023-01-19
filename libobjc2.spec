@@ -45,6 +45,7 @@ rmdir third_party/robin-map
 mv robin-map-* third_party/robin-map
 
 %cmake -DLLVM_OPTS:BOOL=ON \
+	-DGNUSTEP_INSTALL_TYPE=SYSTEM \
 	-G Ninja
 
 %build
