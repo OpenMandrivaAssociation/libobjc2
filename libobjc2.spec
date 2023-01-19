@@ -1,4 +1,6 @@
-%define _disable_ld_no_undefined 1
+# Workaround for
+# https://github.com/llvm/llvm-project/issues/60137
+%define _disable_lto 1
 
 %define major 4.6
 %define libname %mklibname objc %{major}
@@ -10,7 +12,7 @@ Name: libobjc2
 # but not the feature set of libobjc2)
 Epoch: 1
 Version: 2.1
-Release: 1
+Release: 2
 Source0: https://github.com/gnustep/libobjc2/archive/refs/tags/v%{version}.tar.gz
 Source1: https://github.com/Tessil/robin-map/archive/757de829927489bee55ab02147484850c687b620.tar.gz
 Patch0: libobjc2-2.1-workaround-clang-bug.patch
