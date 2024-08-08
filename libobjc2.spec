@@ -25,6 +25,7 @@ BuildRequires: ninja
 BuildRequires: llvm-devel
 BuildRequires: llvm-polly
 BuildRequires: cmake(tsl-robin-map)
+BuildRequires: gnustep-make
 
 %description
 Objective-C 2.0 runtime for use with clang
