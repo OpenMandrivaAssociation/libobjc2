@@ -24,6 +24,7 @@ BuildRequires: cmake
 BuildRequires: ninja
 BuildRequires: llvm-devel
 BuildRequires: llvm-polly
+BuildRequires: cmake(tsl-robin-map)
 
 %description
 Objective-C 2.0 runtime for use with clang
@@ -48,10 +49,6 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %autosetup -p1
-#-a 1
-#rmdir third_party/robin-map
-#mv robin-map-* third_party/robin-map
-
 %cmake -DLLVM_OPTS:BOOL=ON \
 	-DGNUSTEP_INSTALL_TYPE=SYSTEM \
 	-G Ninja
