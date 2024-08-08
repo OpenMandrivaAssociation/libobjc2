@@ -3,6 +3,8 @@
 %define _disable_lto 1
 
 %define major 4.6
+# Versioned libname is intentional here to avoid
+# clash with gcc's internal libobjc
 %define libname %mklibname objc %{major}
 %define libcxxname %mklibname objcxx %{major}
 %define devname %mklibname objc -d
@@ -11,14 +13,11 @@ Name: libobjc2
 # Outnumber gcc's libobjc (which has gcc's version number,
 # but not the feature set of libobjc2)
 Epoch: 1
-Version: 2.1
-Release: 3
-Source0: https://github.com/gnustep/libobjc2/archive/refs/tags/v%{version}.tar.gz
-Source1: https://github.com/Tessil/robin-map/archive/757de829927489bee55ab02147484850c687b620.tar.gz
-Patch0: libobjc2-2.1-workaround-clang-bug.patch
-Patch1: libobjc2-fix-eh_trampoline.patch
+Version: 2.2.1
+Release: 1
+Source0: https://github.com/gnustep/libobjc2/archive/v2.2.1.tar.gz
 Summary: Objective-C 2.0 runtime for use with clang
-URL: http://download.gna.org/gnustep/
+URL: https://github.com/gnustep/
 License: GPL
 Group: System/Libraries
 BuildRequires: cmake
@@ -29,7 +28,15 @@ BuildRequires: llvm-polly
 %description
 Objective-C 2.0 runtime for use with clang
 
-%libpackage objc %{major}
+%package -n %{libname}
+Summary: Objective-C 2.0 runtime library for use with clang
+Group: System/Libraries
+
+%description -n %{libname}
+Objective-C 2.0 runtime library for use with clang
+
+%files -n %{libname}
+%{_libdir}/libobjc.so.*
 
 %package -n %{devname}
 Summary: Development files for %{name}
@@ -40,9 +47,10 @@ Requires: %{libname} = %{EVRD}
 Development files (Headers etc.) for %{name}.
 
 %prep
-%autosetup -p1 -a 1
-rmdir third_party/robin-map
-mv robin-map-* third_party/robin-map
+%autosetup -p1
+#-a 1
+#rmdir third_party/robin-map
+#mv robin-map-* third_party/robin-map
 
 %cmake -DLLVM_OPTS:BOOL=ON \
 	-DGNUSTEP_INSTALL_TYPE=SYSTEM \
