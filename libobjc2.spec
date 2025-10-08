@@ -13,9 +13,9 @@ Name: libobjc2
 # Outnumber gcc's libobjc (which has gcc's version number,
 # but not the feature set of libobjc2)
 Epoch: 1
-Version: 2.2.1
+Version: 2.3
 Release: 1
-Source0: https://github.com/gnustep/libobjc2/archive/v2.2.1.tar.gz
+Source0: https://github.com/gnustep/libobjc2/archive/v%{version}.tar.gz
 Summary: Objective-C 2.0 runtime for use with clang
 URL: https://github.com/gnustep/
 License: GPL
@@ -64,3 +64,4 @@ DESTDIR=%{buildroot} ninja install -C build
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/cmake/libobjc
